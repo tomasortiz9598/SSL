@@ -108,8 +108,8 @@ UTN FRBA – SSL – K2051 – Examen #0 – Recuperatorio #0 – 2020-03-30
 
 ## 10.(1 punto) Diseñe un algoritmo que dado un arreglo de naturales a y su longitud n calcule el promedio
 ### def prom(array, long):
-### 	int suma = 0
-### 	for element in array:
-### 		suma += element
-### 	return suma/long
+###     int suma = 0
+###     for element in array:
+###         suma += element
+###     return suma/long
 
