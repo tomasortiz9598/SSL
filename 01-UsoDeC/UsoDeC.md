@@ -1,0 +1,4 @@
+-Python, basado en c https://github.com/python/cpython
+-OpenCv, basado en c++ https://github.com/opencv/opencv
+-Tesseract, basado en c++ https://github.com/tesseract-ocr/tesseract
+-YOLO, basado en c https://github.com/pjreddie/darknet
