@@ -8,30 +8,21 @@ int getLength(char * text){
     return length;
 }
 
-int isEmpty(char * text){
+int isEmpty( char * text){
     return *text=='\0';
 }
-
-char *strcat(char *text,  char *concat){
-    int i,j;
-    for (i = 0; text[i] != '\0'; i++)
-        ;
-    for (j = 0; concat[j] != '\0'; j++)
-        text[i+j] = concat[j];
-    text[i+j] = '\0';
-    return text;
+int strcmp(char* first_text, char*second_text){
+    if(getLength(first_text) !=getLength(second_text))
+        return 0;
+    for (int i = 0; i <= getLength(first_text); i++)
+        if(first_text[i]!=second_text[i])
+            return 0;
+    return 1;
 }
-
-void power(char*text, int n){
+void power( char*text, int n, char destination[]){
     int length = getLength(text);
-    text = (char*) realloc(text, length*(n-1)  );
-    for (int i = 1; i < n; i++){
-        text[length*i] = *text;
+    for (int i = 0; i < length*n; i++){
+        destination[i] = text[i%length];
     }
-}
-
-int main(){
-    char * text = "asd";
-    printf("%d\n", getLength(text));
-    return 0;
+    destination[length*n] = '\0';
 }
