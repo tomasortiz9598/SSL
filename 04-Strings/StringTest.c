@@ -12,7 +12,7 @@ int main(){
     char prueba[9];
     power(text, 4, prueba);
     
-
+    printf("%s\n", prueba );
     assert( strcmp(prueba,"hihihihi")==1);
     assert( strcmp(prueba,"hihihihiasd")==0);
 
