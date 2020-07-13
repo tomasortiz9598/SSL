@@ -3,9 +3,8 @@ int main(){
     int c, nl, nw, nc;
     nl = nw =nc =0;
     WHILE:
-        if ((c=getchar())!= EOF){
+        if ((c=getchar())!= EOF)
             goto IN;
-        }
     printf("%d %d %d\n", nl, nw, nc);
     return 0;
     OUT:

@@ -21,5 +21,14 @@ digraph C {
   "==  " -> "'\\t'"
 }
 
+digraph 2 {
+  "IN" -> "OUT" [label = " putchar(c);"]
+  "OUT" -> "IN"[label = "printf('\\n'); putchar(c);"]
+  "IN" -> "IN" [label = " putchar(c);"]
+  "IN" -> "EOF" 
+  "OUT" -> "EOF" 
+  
+}
+
 
 
