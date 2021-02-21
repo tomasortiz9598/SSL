@@ -1,16 +1,10 @@
 #include <stdio.h>
+#include <string.h>
 #include <stdbool.h>
 #include "scanner.h"
+#include "tablaSimbolos.h"
 
 
-typedef enum
-{
-  P_INIT,
-  P_OPERADOR,
-  P_IDENTIFICADOR,
-  P_CONSTANTE,
-  P_INVALIDO
-} Estado;
+extern char lexema[MAXVAL];
 
-
-bool parser();
+void parser();

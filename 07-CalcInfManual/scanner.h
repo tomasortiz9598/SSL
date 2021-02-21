@@ -1,25 +1,22 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <stdbool.h>
+#include "logger.h"
+#define MAXVAL 100
+
+extern int flagToken;
 
 typedef enum{
-    T_MULTIPLICADOR,
+    T_MULTIPLICACION,
     T_SUMA,
     T_CONSTANTE,
     T_IDENTIFICADOR,
+    T_LBRACKET,
+    T_RBRACKET,
     T_INVALIDO,
+    T_EVALUACION,
+    T_ASIGNACION,
     T_EOF
 } Token;
 
-
-bool esMultiplicacion(const int );
-bool esSuma(const int );
-bool esEOF(const int );
-bool esLetra(const int );
-bool esDigito(const int );
-void leerId();
-void leerCte();
-
-void errorLexico(const int);
-
-
-Token GetNextToken(); 
+extern int  GetNextToken(); 

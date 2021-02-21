@@ -19,14 +19,14 @@ static void conf(int argc, char **argv){
 }
 
 static void info(void){
-  log_info("========================================CALCULADORA INFIJA MANUAL========================================\n");
+  log_info("========================================CALCULADORA INFIJA AUTOMATICA========================================\n");
   log_info("\n Ejemplo de uso:\n");
   log_info("\n"
         "\tA=24\n"
         "\tB=4;\n"
         "\t$A*(2+5)+B;\n");
 
-  log_info("\nLos identificadores y constantes tienen un máximo de %d caracteres cada uno\n", MAXVAL);
+  log_info("\nLos identificadores y constantes tienen un máximo de 100 caracteres cada uno\n");
   log_info("Cada sentencia se debe ingresar en una línea nueva\n");
   log_info("Para terminar el programa enviar señal de FDT: Ctrl+D (Unix), Ctrl+Z (Windows)\n");
   log_info("Para ejecutar el programa en modo debug: ./calc.out -d\n");
