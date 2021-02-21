@@ -1,9 +1,11 @@
 
 ### 1. Nivel lexico
 
-Para el nivel léxico se generó una máquina de estado y una gramática léxica, para identificar los tokens y lexemas válidos para el LP
+Para esta iteracion se dessarrollo el scanner con la herramienta Lex
 
-Para la implementación del nivel léxico, se desarrollo un `Scanner`, que toma los caracteres del stdin con la función `getchar()`, y expone tokens válidos mediande la función `GetNextToken()`
+Dada una ER se identifican los lexemas y se asocian con un token valido para el LP
+
+Se logra mantener la misma interfaz gracias a la implementacion de la funcion GetNextToken que wrapea la funcion yylex(). Del mismo modo, se realiza una copia de la variable yytext en el buffer global lexema y se puede mantener el funcionamiento de la tabla de simbolos
 
 ### Maquina de Estado
 ![NivelLexico](./img/maquina.gv.svg)
@@ -31,7 +33,18 @@ Para la implementación del nivel léxico, se desarrollo un `Scanner`, que toma 
 
 ### 2. Nivel sintactico
 
+El parser se desarrollo con la herramienta Bison.
+
+La funcion parser() permite mantener la compatibilidad con calc.c ya que wrapea a la funcion yyparse() de bison. 
+
+Se reimplementa en parser.y la funcion yylex que wrapea a la funcion GetNextToken definida en scanner.l
+
+Para la gramatica definida se utiliza recursividad a izquierda
+
+Adicionalmente se utiliza la directiva union de Bison que permite definir el valor semantico que tiene cada una de la rutinas. La union contiene un campo para cada tipo de valor semantico. En la variable yylval Lex le pasa a Bison los valores semanticos
+
 **Categorias Sintacticas**
+- Parser
 - Programa
 - listaSentencias
 - sentencia
@@ -39,8 +52,9 @@ Para la implementación del nivel léxico, se desarrollo un `Scanner`, que toma 
 - Termino
 - Factor
 
-**Gramatica sintactica**
+**Gramatica sintactica en BNF**
 ```
+<parser> ::=  <programa>
 <programa> ::=  <listaSentencias> FDT
 <listaSentencias> ::=  <sentencia> | <listaSentencias> <sentencia>
 <sentencia> ::= <identificador> <asignacion> <constante>  |  <evaluacion> <expresión> 
