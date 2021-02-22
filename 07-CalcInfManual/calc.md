@@ -66,6 +66,7 @@ Cada PAS reduce la expresion a un valor entero y resuelve la prescedencia de ope
 - match(): invoca a la función del Scanner `GetNextToken()`, si el valor no coincide con el esperado se produce un error sintáctico y se aborta el programa
 
 **Categorias Sintacticas**
+- Parser
 - Programa
 - listaSentencias
 - sentencia

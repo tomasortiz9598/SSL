@@ -7,13 +7,10 @@ static Token scanner();
 static bool esMultiplicacion(const int );
 static bool esSuma(const int );
 static bool esEOF(const int );
-static bool esLetra(const int );
-static bool esDigito(const int );
 static bool esLBracket(const int c);
 static bool esRBracket(const int c);
 static bool esAsignacion (const int c);
 static bool esEvaluacion(const int c);
-static bool esEspacio(const int c);
 static void cleanLexema();
 static void writeToken(int c);
 static void endToken();
@@ -122,19 +119,10 @@ static bool esAsignacion (const int c){
 static bool esEvaluacion(const int c){
   return c == '$';
 }
-static bool esEspacio(const int c){
-    return isspace(c);
-}
-
 static void leerId(){
     int c;
     c = getchar();
-    if (esEOF(c)){
-        endToken();
-        ungetc(c, stdin);
-        return;
-    }
-    else if (isalpha(c)){
+    if (isalpha(c)){
         writeToken(c);
         leerId();
     }
@@ -148,12 +136,7 @@ static void leerId(){
 void leerCte(){
     int c ;
     c = getchar();
-    if (esEOF(c)){
-        endToken();
-        ungetc(c, stdin);
-        return;
-    }
-    else if (isdigit(c)){
+    if (isdigit(c)){
         writeToken(c);
         leerCte();
     }

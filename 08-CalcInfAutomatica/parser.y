@@ -7,15 +7,13 @@
   #include "logger.h"
 
 
-void yyerror(char const *s){log_error ("Error en el Parser: %s\n", s);} // cuando yyparser detecta un error sintacto hace uso de yyerror, por lo cual es necesario declararla
-
-  
+void yyerror(char const *s){log_error ("Error en el Parser: %s\n", s);} 
 static int yylex();
 
 
 %}
 
-%union { //declara los tipos de valores de los token para el analisis semantico
+%union { 
   int intVal;
   char strVal[100];
 }

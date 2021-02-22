@@ -14,7 +14,7 @@ int main(int argc, char **argv){
 
 
 static void conf(int argc, char **argv){
-  if (argc > 1 && strcmp("-d", argv[1]) == 0)
+  if (argc > 1 && !strcmp("-d", argv[1]) )
         DEBUG = 1;
 }
 

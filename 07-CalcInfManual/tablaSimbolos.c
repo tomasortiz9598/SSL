@@ -1,5 +1,12 @@
 #include "tablaSimbolos.h"
 
+
+
+typedef struct {
+    char variable[MAXVAL];
+    int valor;
+}Simbolos;
+
 Simbolos TablaSimbolos[MAXVAL];
 int id_TablaSimbolos=0;
 
