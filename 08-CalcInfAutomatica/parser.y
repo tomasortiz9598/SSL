@@ -4,9 +4,10 @@
   #include "scanner.h"
   #include "parser.h"
   #include "tablaSimbolos.h"
+  #include "logger.h"
 
 
-void yyerror(char const *s){printf ("Error en el Parser: %s\n", s);} // cuando yyparser detecta un error sintacto hace uso de yyerror, por lo cual es necesario declararla
+void yyerror(char const *s){log_error ("Error en el Parser: %s\n", s);} // cuando yyparser detecta un error sintacto hace uso de yyerror, por lo cual es necesario declararla
 
   
 static int yylex();
@@ -44,7 +45,7 @@ listaSentencias: sentencia
   | listaSentencias sentencia;
 
 sentencia: T_IDENTIFICADOR T_ASIGNACION T_CONSTANTE {setTS($1,$3); }
-  | T_EVALUACION expresion {printf("El resultado es: %d\n", $2);};
+  | T_EVALUACION expresion {log_info("El resultado es: %d\n", $2);};
 
 expresion: termino {$$=$1;}
  | expresion T_SUMA termino {$$=$1+$3;}
@@ -73,10 +74,10 @@ void parser(){
     case 0:
       return;
     case 1:
-     printf("Error Sintactico \n");
+     log_error("Error Sintactico \n");
      return;
     default:
-      printf("Otro Error\n");
+      log_error("Otro Error\n");
       return;
   }
 }

@@ -74,16 +74,17 @@
   #include "scanner.h"
   #include "parser.h"
   #include "tablaSimbolos.h"
+  #include "logger.h"
 
 
-void yyerror(char const *s){printf ("Error en el Parser: %s\n", s);} // cuando yyparser detecta un error sintacto hace uso de yyerror, por lo cual es necesario declararla
+void yyerror(char const *s){log_error ("Error en el Parser: %s\n", s);} // cuando yyparser detecta un error sintacto hace uso de yyerror, por lo cual es necesario declararla
 
   
 static int yylex();
 
 
 
-#line 87 "parser.c"
+#line 88 "parser.c"
 
 # ifndef YY_CAST
 #  ifdef __cplusplus
@@ -498,8 +499,8 @@ static const yytype_int8 yytranslate[] =
   /* YYRLINE[YYN] -- Source line where rule number YYN was defined.  */
 static const yytype_int8 yyrline[] =
 {
-       0,    41,    41,    43,    44,    46,    47,    49,    50,    53,
-      54,    57,    58,    59
+       0,    42,    42,    44,    45,    47,    48,    50,    51,    54,
+      55,    58,    59,    60
 };
 #endif
 
@@ -1082,61 +1083,61 @@ yyreduce:
   switch (yyn)
     {
   case 5: /* sentencia: T_IDENTIFICADOR T_ASIGNACION T_CONSTANTE  */
-#line 46 "parser.y"
+#line 47 "parser.y"
                                                     {setTS((yyvsp[-2].strVal),(yyvsp[0].intVal)); }
-#line 1088 "parser.c"
+#line 1089 "parser.c"
     break;
 
   case 6: /* sentencia: T_EVALUACION expresion  */
-#line 47 "parser.y"
-                           {printf("El resultado es: %d\n", (yyvsp[0].intVal));}
-#line 1094 "parser.c"
+#line 48 "parser.y"
+                           {log_info("El resultado es: %d\n", (yyvsp[0].intVal));}
+#line 1095 "parser.c"
     break;
 
   case 7: /* expresion: termino  */
-#line 49 "parser.y"
+#line 50 "parser.y"
                    {(yyval.intVal)=(yyvsp[0].intVal);}
-#line 1100 "parser.c"
+#line 1101 "parser.c"
     break;
 
   case 8: /* expresion: expresion T_SUMA termino  */
-#line 50 "parser.y"
+#line 51 "parser.y"
                             {(yyval.intVal)=(yyvsp[-2].intVal)+(yyvsp[0].intVal);}
-#line 1106 "parser.c"
+#line 1107 "parser.c"
     break;
 
   case 9: /* termino: factor  */
-#line 53 "parser.y"
+#line 54 "parser.y"
                 {(yyval.intVal)=(yyvsp[0].intVal);}
-#line 1112 "parser.c"
+#line 1113 "parser.c"
     break;
 
   case 10: /* termino: factor T_MULTIPLICACION termino  */
-#line 54 "parser.y"
+#line 55 "parser.y"
                                    {(yyval.intVal)=(yyvsp[-2].intVal)*(yyvsp[0].intVal);}
-#line 1118 "parser.c"
+#line 1119 "parser.c"
     break;
 
   case 11: /* factor: T_IDENTIFICADOR  */
-#line 57 "parser.y"
+#line 58 "parser.y"
                         {(yyval.intVal)=getTS((yyvsp[0].strVal));}
-#line 1124 "parser.c"
+#line 1125 "parser.c"
     break;
 
   case 12: /* factor: T_CONSTANTE  */
-#line 58 "parser.y"
+#line 59 "parser.y"
                {(yyval.intVal)=(yyvsp[0].intVal);}
-#line 1130 "parser.c"
+#line 1131 "parser.c"
     break;
 
   case 13: /* factor: T_LBRACKET expresion T_RBRACKET  */
-#line 59 "parser.y"
+#line 60 "parser.y"
                                    {(yyval.intVal)=(yyvsp[-1].intVal);}
-#line 1136 "parser.c"
+#line 1137 "parser.c"
     break;
 
 
-#line 1140 "parser.c"
+#line 1141 "parser.c"
 
       default: break;
     }
@@ -1330,7 +1331,7 @@ yyreturn:
   return yyresult;
 }
 
-#line 64 "parser.y"
+#line 65 "parser.y"
 
 
 
@@ -1343,10 +1344,10 @@ void parser(){
     case 0:
       return;
     case 1:
-     printf("Error Sintactico \n");
+     log_error("Error Sintactico \n");
      return;
     default:
-      printf("Otro Error\n");
+      log_error("Otro Error\n");
       return;
   }
 }
